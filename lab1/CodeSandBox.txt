@@ -1,0 +1,30 @@
+﻿            while (!(AllTrue(V1) && AllTrue(U1)))
+            {
+                int i = -1;
+                int j = -1;
+                for (int i1 = BSize - 1; i1 >= 0; i1--)
+                    if (V1[i1] && !V2[i1]) i = i1;                    
+                for (int j1 = ASize - 1; j1 >= 0; j1--)
+                    if (U1[j1] && !U2[j1]) j = j1;
+
+                if (i != -1)
+                {
+                    for (int j1 = 0; j1 < ASize; j1++)
+                    {
+                        if (!U1[j1]) U[j1] = HelpMatr[j1, i] - V[i];
+                        if (U[j1] == U[j1]) U1[j1] = true;
+                    }
+                    V2[i] = true;
+                }
+
+                if (j != -1)
+                {
+                    for (int i1 = 0; i1 < BSize; i1++)
+                    {
+                        if (!V1[i1]) V[i1] = HelpMatr[j, i1] - U[j];
+                        if (V[i1] == V[i1]) V1[i1] = true;
+                    }
+                    U2[j] = true;
+                }
+
+            }
